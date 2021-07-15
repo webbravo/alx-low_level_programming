@@ -1,32 +1,19 @@
-#include <stdlib.h>
-#include <stdio.h>
 #include "holberton.h"
+#include <stdlib.h>
 
 /**
- * create_array - create array of chars and initialize with a specific char
- * @size: size of array
- * @c: fill array values with this char
- * Return: pointer to array
+ * malloc_checked - Allocates memory using malloc.
+ * @b: The number of bytes to be allocated.
+ *
+ * Return: A pointer to the allocated memory.
  */
-
-char *create_array(unsigned int size, char c)
+void *malloc_checked(unsigned int b)
 {
-	char *arr;
-	int i = 0;
+	void *mem = malloc(b);
 
-	if (size <= 0) /* validate size input */
-		return (NULL);
-	arr = malloc(sizeof(char) * size); /* allocate memory */
+	if (mem == NULL)
+		exit(98);
 
-	if (arr == NULL) /* validate memory */
-		return (NULL);
-
-	while (i < (int)size) /* set array values to char c */
-	{
-		*(arr + i) = c;
-		i++;
-	}
-	*(arr + i) = '\0';
-
-	return (arr);
+	return (mem);
 }
+
